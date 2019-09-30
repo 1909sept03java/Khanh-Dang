@@ -1,0 +1,40 @@
+<body style="background-color:rgb(9, 214, 250);">
+
+<!-- need to import FormsModule in app.module.ts for NgModel -->
+<div>
+    <span>Enter Your Words Here:</span>
+    <br>
+    <input [(ngModel)]="user.newSection" placeholder="User Words">
+</div>
+
+<div>
+    <button (click)="submitComment()">Check Palindrome</button>
+</div>
+
+<div>
+    <p>Palindrome: {{user.section}}</p>
+   
+</div>
+
+<div>
+       
+    <span>Enter Your Numbers Here:</span>
+    <br>
+    <!--<input [(ngModel)]="user.newSection" placeholder="User Numbers"> -->
+    
+</div>
+<div>
+        <button (click)="submitComment()">Sort Arrays</button>
+</div>
+
+<!--<div>
+        <button [(ngModel)]="toggle" (click)="toggle = !toggle">Toggle</button>
+ 
+        <demo-component *ngIf="toggle; else sorting"> </demo-component>
+        
+        <ng-template #sorting>
+            <sorting></sorting>
+        </ng-template>
+</div> -->
+
+</body>
