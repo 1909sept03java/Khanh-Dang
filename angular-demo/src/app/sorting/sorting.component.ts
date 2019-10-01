@@ -2,40 +2,27 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sorting',
-  styleUrls: ['./sorting.component.css'],
-  template:`
-  <div class = "toggle-panel" *ngIf = "show" [hidden] = "hidden">
-    Toggle Me
-  </div>
-
-  <button> (click) = "toggleShow()">Show</button>
-  <button> (click) = "toggleShow()">Hidden</button>
-
-  `
-  
+  templateUrl: './sorting.component.html',
+  providers: [SortingComponent], // use providers to avoid unspecified template
+  styleUrls: ['./sorting.component.css']
 })
-export class SortingComponent implements OnInit {
-
+export class SortingComponent implements OnInit 
+{
   constructor() { }
 
-  show = true;
-  hidden = false;
+  //sort number arrays 
+  string: string;
+  output: string;
+  sortArray(): void 
+  {
+    let array = this.string.split(',').map(function (item) { //allow user to insert , between numbers
+      return parseInt(item, 10);
+    });
+    this.output = "Sorted list: " + array.sort(function (a, b) { return a - b });
+    console.log(array.sort(function (a, b) { return a - b }));
+  }
 
-  toggleShow()
-  {
-    this.show = !this.show;
-  }
-  toggleHidden()
-  {
-    this.hidden = !this.hidden;
-  }
-  
   ngOnInit() {
   }
-
-
-
-  //sort number arrays 
-  
 
 }

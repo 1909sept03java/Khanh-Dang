@@ -5,31 +5,35 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './demo-component.component.html',
   styleUrls: ['./demo-component.component.css']
 })
-export class DemoComponentComponent implements OnInit {
-
+export class DemoComponentComponent implements OnInit 
+{
   constructor() { }
 
-  // property of DemoComponentComponent
-  user = {
-    section: '',
-    newSection: ''
-    
-  };
-
-  // function invoked in event binding demo
-  submitComment()
+  //checking reverse string method
+  string: string;
+  output: string;
+  flag: number = 1;// using flags as checkers
+  isPalindrome(): void 
   {
-    //if is palindrome 
-    this.user.section += this.user.newSection;
+    let length = this.string.length - 1;
+    this.flag = 1;
+    for (let k = 0; k < length / 2; k++) 
+    {
+      if (this.string.charAt(k) != this.string.charAt(length)) 
+      {
+        this.output = "Try again! Not a Palindrome";
+        console.log("Try again! Not a Palindrome");
+        this.flag = 0;
+        break;
+      }
+      length--; // check  if reverse string matches
+    }
+    if (this.flag === 1) 
+    {
+      this.output = this.string + " is a Palindrome";
+      console.log(this.string + " is a Palindrome");
+    }
   }
-
-  //checking reverse string
-  isPalindrome(str:string) 
-  {
-    return str.split('').reverse().join('') === str;
-  }
-
-  
 
   ngOnInit() {
   }
