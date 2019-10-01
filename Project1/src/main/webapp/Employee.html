@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="stylesP1.css">
+
+</head>
+<title>Employee</title>
+<body style="background-color:orange">
+	<div style="background-color:lightblue">
+		<h1 id="welcome"></h1>
+		<h3 id="email"></h3>
+		<h2><strong>WELCOME TO YOUR EMPLOYEE PORTAL!</strong></h2>
+	</div>
+	<div>
+		<h2>Create Reimbursement Request:</h2>
+		<form action="reimBal" method="post">
+			<input type="text" value="0" name="reimBal">
+		</form>
+	</div>
+	<div>
+		<h2>Your Current Reimbursements:</h2>
+		<button id="getInfo">Show</button>
+		<br>
+		<div id="reimbursements-pending"></div>
+		<br>
+		<div id="reimbursements-done"></div>
+	</div>
+
+	<div>
+		<form action="logout" method="get" style="text-align: center;">
+			<input type="submit" value="logout" />
+		</form>
+	</div>
+</body>
+
+</html>

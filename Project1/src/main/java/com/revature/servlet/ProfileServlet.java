@@ -15,12 +15,16 @@ public class ProfileServlet extends HttpServlet
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession(false);
-		if (session != null && session.getAttribute("userId") != null) {
-				req.getRequestDispatcher("Profile.html").forward(req, resp);
+		if (session != null && session.getAttribute("employeeManagerId").equals(0)) {
+			System.out.println("MANAGER LOGIN");
+			req.getRequestDispatcher("Manager.html").forward(req, resp);
+		} else if (session != null && !session.getAttribute("employeeManagerId").equals(0)) {
+			System.out.println("EMPLOYEE LOGIN");
+			req.getRequestDispatcher("Employee.html").forward(req, resp);
 		} else {
 			resp.sendRedirect("login");
 		}
-	}
+	}// MANAGERS ARE 0'S, USERS ARE 1'S
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

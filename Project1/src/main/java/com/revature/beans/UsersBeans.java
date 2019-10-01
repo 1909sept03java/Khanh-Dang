@@ -10,7 +10,7 @@ public class UsersBeans
 		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
-	}
+	}       
 	private int id;
 	private String firstname;
 	private String lastname;

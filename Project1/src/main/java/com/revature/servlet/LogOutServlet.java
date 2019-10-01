@@ -10,11 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebServlet("/logout")
-public class LogOutServlet extends HttpServlet
-{
+public class LogOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	@Override
+       
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// invalidate current session
 		HttpSession session = request.getSession(false);

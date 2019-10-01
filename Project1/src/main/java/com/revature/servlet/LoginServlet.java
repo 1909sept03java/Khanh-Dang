@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.revature.beans.CredentialsBeans;
+import com.revature.beans.EmployeeBeans;
 import com.revature.beans.UsersBeans;
 import com.revature.service.AuthenticationService;
 
@@ -25,37 +26,33 @@ public class LoginServlet extends HttpServlet
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// serve the login.html page as a response
-		// RequestDispatcher is used to perform a 'forward' 
+		// RequestDispatcher is used to perform a 'forward'
 		// (pass the request to another resource without the client knowing)
 		req.getRequestDispatcher("Login.html").forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// check whether a session already exists, and create one if not 
-		// overloaded version take a boolean parameter, if false returns null if not session exists
-		// matching the incoming request's JSESSIONID token
 		HttpSession session = req.getSession();
-		// grab credentials from the request - use getParameter for form data
 		CredentialsBeans creds = new CredentialsBeans();
 		creds.setUsername(req.getParameter("username"));
 		creds.setPassword(req.getParameter("password"));
-		// pass responsibility for performing auth logic to a service
-		UsersBeans u = authService.authenticateUser(creds);
-		if (u != null) {
-			// they're real 
-			// set user information as session attributes (not request attributes)
-			session.setAttribute("userId", u.getId());
-			session.setAttribute("firstname", u.getFirstname());
-			session.setAttribute("lastname", u.getLastname());
-			session.setAttribute("problem", null);
-			// redirect to their profile
+		// passing the responsibility for performing auth logic to a service
+		EmployeeBeans emp = authService.authenticateUser(creds);
+		if (emp != null) {
+			// check if user is real
+			System.out.println("Employee exists");
+			System.out.println(emp.toString());
+			session.setAttribute("employeeId", emp.getEmployeeId());
+			session.setAttribute("employeeUsername", emp.getEmployeeUsername());
+			session.setAttribute("employeePassword", emp.getEmployeePassword());
+			session.setAttribute("employeeEmail", emp.getEmployeeEmail());
+			session.setAttribute("employeeManagerId", emp.getEmployeeManagerId());
 			resp.sendRedirect("profile");
-		} else {
-			// they're not real
+		} else { // user is not real, redirect back 
+			
 			session.setAttribute("problem", "Invalid Credentials");
-			// resp.getWriter().write("invalid credentials");
-			// redirect back to login
+			System.out.println("User Does Not Exists in Database");
 			resp.sendRedirect("login");
 		}
 	}
