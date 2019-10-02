@@ -1,9 +1,13 @@
-<div style="background-color:rgb(128, 0, 248);">
+<body style="background-color:rgb(138, 3, 248);">
 
-        <h2><strong>SORTING NUMBERS APP</strong></h2>
+        <div><button (click)="showSort()">SHOW SORT APP</button></div>
+        <div *ngIf = "showbutton2">
+        <br>
+        <div><strong>SORTING NUMBER APP</strong></div>
         <input id="string" [(ngModel)]="string"/>
         <br>
-        <div><button (click)="sortArray()">SORT NUMBERS</button></div>
+        <div><button (click)="sortArray()">SORT</button></div>
         <br>
         <p><strong>{{ output }}</strong></p>
-</div>
+        </div>
+        </body>

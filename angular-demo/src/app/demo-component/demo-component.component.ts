@@ -9,6 +9,13 @@ export class DemoComponentComponent implements OnInit
 {
   constructor() { }
 
+  //SHOW BUTTON
+  showbutton1 = false;
+  public showPalindrome():void
+  {
+    this.showbutton1 = !this.showbutton1;
+  }
+
   //checking reverse string method
   string: string;
   output: string;

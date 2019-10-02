@@ -10,6 +10,13 @@ export class SortingComponent implements OnInit
 {
   constructor() { }
 
+  //SHOW BUTTON
+  showbutton2 = false;
+  public showSort():void
+  {
+    this.showbutton2 = !this.showbutton2;
+  }
+
   //sort number arrays 
   string: string;
   output: string;

@@ -1,9 +1,13 @@
 <body style="background-color:rgb(9, 214, 250);">
 
+<div><button (click)="showPalindrome()">SHOW PALINDROME APP</button></div>
+<div *ngIf = "showbutton1">
+<br>
 <div><strong>PALINDROME APP</strong></div>
 <input id="string" [(ngModel)]="string"/>
 <br>
 <div><button (click)="isPalindrome()">CHECK PALINDROME</button></div>
 <br>
 <p><strong>{{ output }}</strong></p>
+</div>
 </body>
