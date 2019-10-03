@@ -1,25 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <meta charset="ISO-8859-1">
-<title>Profile</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
 <link rel="stylesheet" href="stylesP1.css">
 
 </head>
-<body>
-	<div class="display">
-		<h1>WELCOME TO YOUR PROFILE</h1>
+<title>Profile</title>
+<body style="background-color: orange">
+	<div style="background-color: lightblue">
+		<h1>
+			<strong>EMPLOYEE PORTAL</strong>
+		</h1>
+		<h2 id="welcome"></h2>
 	</div>
-	<div class="display">
-		<br>
-		<p id="firstname"></p>
-		<br>
-		<p id="lastname"></p>
+	<br>
+	<div style="border: 2px solid DodgerBlue;">
+		<h2>Your Reimbursement Requests:</h2>
+		<form action="createreqsession" method="post">
+			<label for="reimbursementBalance">Amount:</label> <input required type="number"
+				min="0" name="reimbursementBalance" class="form-control col-md-4"> <input
+				type="submit" value="submit" />
+		</form>
 	</div>
-	<form action="logout" method="get" class="center">
-		<input type="submit" value="logout"/>
-	</form>
+	<br>
+	<div style="border: 2px solid DodgerBlue;">
+		<h2>Your Current Reimbursements:</h2>
+		<br>
+	</div>
+	<div>
+		<table class="table table-bordered table-dark">
+			<thead>
+				<tr>
+					<th scope="col">Employee ID</th>
+					<th scope="col">Amount</th>
+					<th scope="col">Status</th>
+					<th scope="col">Note</th>
+
+				</tr>
+			</thead>
+				<tbody id = "table">
+						</tbody>
+
+		</table>
+	</div>
+	<br>
+	<div>
+		<form action="logout" method="get" style="text-align: center;">
+			<input type="submit" value="logout" />
+		</form>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div style="background-color: white;">
+		<img src="Revature_CMYK.jpg" alt="Revature Logo"
+			style="width: 360px; height: 240px;" class="center">
+	</div>
 </body>
-<script src="scripts/Check.js"></script>
+<script src="scripts/Test.js"></script>
 </html>

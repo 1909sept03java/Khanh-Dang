@@ -12,9 +12,9 @@ import com.revature.beans.Payment;
 import com.revature.service.ConnectionService;
 
 public class PaymentDaoImp implements PaymentDao 
-{
+{ 
 	@Override
-	public List<Payment> getReimbursements() {
+	public List<Payment> getReimbursements(int employeeId) {
 		List<Payment> payList = new ArrayList<Payment>();
 		try (Connection con = ConnectionService.getConnection();) {
 			String sql = "SELECT * FROM PAYMENT";
@@ -24,9 +24,9 @@ public class PaymentDaoImp implements PaymentDao
 				int reimbursementId = rs.getInt("PAY_ID");
 				double reimbursementBalance = rs.getDouble("PAY_AMOUNT");
 				String reimbursementStatus = rs.getString("PAY_STATUS"); 
-				int employeeId = rs.getInt("EMP_ID");
+				int employeeId2 = rs.getInt("EMP_ID");
 				payList.add(
-						new Payment(reimbursementId, reimbursementBalance, reimbursementStatus, employeeId));
+						new Payment(reimbursementId, reimbursementBalance, reimbursementStatus, employeeId2));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -72,8 +72,9 @@ public class PaymentDaoImp implements PaymentDao
 		try (Connection con = ConnectionService.getConnection();) {
 			String sql = "INSERT INTO PAYMENT(PAY_ID, PAY_AMOUNT, PAY_STATUS, EMP_ID) VALUES(SQ_PAYMENTS_PK.NEXTVAL, ?, 'P', ?)";
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setDouble(1, reimbursementBalance);
-			ps.setInt(2, employeeId);
+			ps.setInt(1, employeeId);
+			ps.setDouble(2, reimbursementBalance);
+			
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -69,4 +69,21 @@ public class EmployeeDaoImp implements EmployeeDao
 		return emp;
 	}
 
+	@Override
+	public void updateEmployees(int employeeId, String username, String password) 
+	{
+		try (Connection con = ConnectionService.getConnection();) {
+			String sql = "UPDATE EMP SET EMP_USERNAME = ?, EMP_PASSWORD = ? WHERE EMP_ID = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, username);
+			ps.setString(2, password);
+			ps.setInt(3, employeeId);
+			ps.executeUpdate();
+		} catch (SQLException e2) {
+			e2.printStackTrace();
+		} catch (IOException e2) {
+			e2.printStackTrace();
+		}
+	}
+
 }

@@ -20,7 +20,7 @@ public class ProfileServlet extends HttpServlet
 			req.getRequestDispatcher("Manager.html").forward(req, resp);
 		} else if (session != null && !session.getAttribute("employeeManagerId").equals(0)) {
 			System.out.println("EMPLOYEE LOGIN");
-			req.getRequestDispatcher("Employee.html").forward(req, resp);
+			req.getRequestDispatcher("Profile.html").forward(req, resp);
 		} else {
 			resp.sendRedirect("login");
 		}

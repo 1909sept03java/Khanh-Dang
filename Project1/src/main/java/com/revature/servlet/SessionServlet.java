@@ -30,7 +30,7 @@ public class SessionServlet extends HttpServlet
 		HttpSession session = req.getSession(false);
 		try {
 			
-			// Get the CURRENT USER INFO into the /session tab
+			// Get all user data into a session
 			EmployeeBeans emp = new EmployeeBeans();
 			emp.setEmployeeId(Integer.parseInt(session.getAttribute("employeeId").toString()));
 			emp.setEmployeeUsername(session.getAttribute("employeeUsername").toString());

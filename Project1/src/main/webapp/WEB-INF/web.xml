@@ -23,4 +23,26 @@
   	<url-pattern>/profile</url-pattern>
   </servlet-mapping>
   
+  <!-- Error Handling servlet definition -->
+	<servlet>
+		<servlet-name>ErrorHandlingServlet</servlet-name>
+		<servlet-class>com.revature.servlet.ErrorHandlingServlet</servlet-class>
+	</servlet>
+
+	<!-- servlet mappings -->
+	<servlet-mapping>
+		<servlet-name>ErrorHandlingServlet</servlet-name>
+		<url-pattern>/ErrorHandlingServlet</url-pattern>
+	</servlet-mapping>
+
+	<!-- error-code related error pages -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/ErrorHandlingServlet</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/ErrorHandlingServlet</location>
+	</error-page>
+  
 </web-app>
