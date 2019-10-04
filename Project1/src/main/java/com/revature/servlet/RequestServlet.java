@@ -38,7 +38,7 @@ public class RequestServlet extends HttpServlet
 		{
 			int empId = Integer.parseInt(session.getAttribute("employeeId").toString());
 			List<Payment> table = new ArrayList<Payment>();
-			table = rs.getReimbursements(empId);
+			table = rs.getReimbursementsByEmployeeId(empId);
 			resp.getWriter().write((new ObjectMapper()).writeValueAsString(table));
 			
 		} catch (Exception e) {

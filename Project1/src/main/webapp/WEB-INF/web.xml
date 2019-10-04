@@ -35,7 +35,7 @@
 		<url-pattern>/ErrorHandlingServlet</url-pattern>
 	</servlet-mapping>
 
-	<!-- error-code related error pages -->
+	<!-- error related mappings -->
 	<error-page>
 		<error-code>404</error-code>
 		<location>/ErrorHandlingServlet</location>

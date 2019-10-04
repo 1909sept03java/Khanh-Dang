@@ -35,14 +35,12 @@
 		<br>
 	</div>
 	<div>
-		<table class="table table-bordered table-dark">
+		<table class="table table-hover	table-bordered table-dark">
 			<thead>
 				<tr>
 					<th scope="col">Employee ID</th>
 					<th scope="col">Amount</th>
 					<th scope="col">Status</th>
-					<th scope="col">Note</th>
-
 				</tr>
 			</thead>
 				<tbody id = "table">
@@ -51,6 +49,15 @@
 		</table>
 	</div>
 	<br>
+	<div>
+		<h3>Update Your User Info:</h3>
+		<form action="updateuser" method="POST">
+			<input type="text" placeholder="username" name="username" /> <input
+				type="password" placeholder="password" name="password" /> <br> <input type="submit"  class="btn btn-secondary"
+				value="UpdateUser" />
+		</form>
+
+	</div>
 	<div>
 		<form action="logout" method="get" style="text-align: center;">
 			<input type="submit" value="logout" />

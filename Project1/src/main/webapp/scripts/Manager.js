@@ -1,5 +1,3 @@
-let user = {};
-
 window.onload = function() {
 	populateUser();
 }
@@ -7,17 +5,16 @@ window.onload = function() {
 async function populateUser() {
 
 	try {
-		let [response, reqlist] = await Promise.all([fetch('http://localhost:8082/Project1/session'),
-			fetch('http://localhost:8082/Project1/requestsession')]);
-		const list = await reqlist.json();
+		let [response, plist] = await Promise.all([fetch('http://localhost:8082/Project1/session'),
+			fetch('http://localhost:8082/EmployeeManagement/empundman')]);
+		const list = await plist.json();
 		const data = await response.json();
 		let i = 1;
 		if(data.session === null) {
 			window.location = "http://localhost:8082/Project1/login"
 		} else {
-			//define behavior for when a user is returned
 			user = data;
-			document.getElementById("welcome").innerText = "Welcome " + data.employeeUsername + " To Your Employee Portal!";
+			document.getElementById("welcomemanager").innerText = "Welcome " + data.employeeUsername + " To Your Employee Portal!";
 			let table = document.getElementById("table");
 			list.forEach(element => {
 				let tr = document.createElement("tr");
@@ -30,6 +27,7 @@ async function populateUser() {
 				table.appendChild(tr);
 				i++;
 			});
+			
 		}
 	} catch(error) {
 		console.log(error);

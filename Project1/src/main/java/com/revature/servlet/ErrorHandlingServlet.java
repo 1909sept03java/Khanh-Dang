@@ -13,14 +13,14 @@ public class ErrorHandlingServlet extends HttpServlet {
 
 	// Handling GET method request.
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// getting useful information about the error that occurred client side
+		// getting information about the error that happened via client side
 		Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
 		Class<?> exceptionType = (Class<?>) request.getAttribute("javax.servlet.error.exception_type");
 		String message = (String) request.getAttribute("javax.servlet.error.message");
 		String requestUri = (String) request.getAttribute("javax.servlet.error.request_uri");
 		String exception = (String) request.getAttribute("javax.servlet.error.exception");
 		String servletName = (String) request.getAttribute("javax.servlet.error.servlet_name");
-		// displaying it to the console
+		// displaying info to the console
 		System.out.println("StatusCode: " + statusCode);
 		System.out.println("ExceptionType: " + exceptionType);
 		System.out.println("Message: " + message);

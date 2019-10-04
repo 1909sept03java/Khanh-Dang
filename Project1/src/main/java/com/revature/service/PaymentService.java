@@ -9,9 +9,9 @@ public class PaymentService
 {
 	private PaymentDaoImp payImp = new PaymentDaoImp();
 	
-	public List<Payment> getReimbursements(int employeeId)
+	public List<Payment> getReimbursementsByEmployeeId(int employeeId)
 	{
-		return payImp.getReimbursements(employeeId);
+		return payImp.getReimbursementsByEmployeeId(employeeId);
 	}
 	
 	public void createReimbursements(double reimbursementBalance, int employeeId)
