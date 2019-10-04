@@ -6,7 +6,7 @@ async function populateUser() {
 
 	try {
 		let [response, plist] = await Promise.all([fetch('http://localhost:8082/Project1/session'),
-			fetch('http://localhost:8082/EmployeeManagement/empundman')]);
+			fetch('http://localhost:8082/Project1/managersession')]);
 		const list = await plist.json();
 		const data = await response.json();
 		let i = 1;
@@ -14,7 +14,7 @@ async function populateUser() {
 			window.location = "http://localhost:8082/Project1/login"
 		} else {
 			user = data;
-			document.getElementById("welcomemanager").innerText = "Welcome " + data.employeeUsername + " To Your Employee Portal!";
+			document.getElementById("welcomemanager").innerText = "Welcome " + data.employeeUsername + " To Your Manager Portal!";
 			let table = document.getElementById("table");
 			list.forEach(element => {
 				let tr = document.createElement("tr");
