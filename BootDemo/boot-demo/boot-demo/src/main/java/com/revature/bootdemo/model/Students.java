@@ -1,50 +1,55 @@
 package com.revature.bootdemo.model;
+
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 @Entity
+@Table(name="STUDENTS")
 public class Students 
-{
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-	
-	@Column(nullable = false)
-	private String firstName;
-	
-	@Column(nullable = false)
-	private String lastName;
-	
-	@ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "course_student", 
-      joinColumns = @JoinColumn(name = "course_id", referencedColumnName = "id"), 
-      inverseJoinColumns = @JoinColumn(name = "student_id", 
-      referencedColumnName = "id"))
-	private List<Courses> courses;
+{	
+	@Min(0) 
+	@Id 
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="studentSequence")
+	@SequenceGenerator(allocationSize=1, name="studentSequence", sequenceName="SQ_STUDENTS_PK")
+	@Column(name="STUDENT_ID")
+	private int id;
+	private String name;
+	@ManyToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
+	@JoinTable(name="STUDENTS_COURSES",
+	joinColumns = {@JoinColumn(name="STUDENT_ID")},
+	inverseJoinColumns = {@JoinColumn(name="COURSE_ID")})
+	private List<Courses> courses = new ArrayList<>();
 
-	public String getFirstName() {
-		return firstName;
+	public Students() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public String getName() {
+		return name;
 	}
 
-	public String getLastName() {
-		return lastName;
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public Students(@Min(0) int id, String name, List<Courses> courses) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.courses = courses;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public List<Courses> getCourses() {
@@ -54,5 +59,4 @@ public class Students
 	public void setCourses(List<Courses> courses) {
 		this.courses = courses;
 	}
-
 }

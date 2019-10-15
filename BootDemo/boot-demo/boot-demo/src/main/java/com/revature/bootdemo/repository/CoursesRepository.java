@@ -1,15 +1,13 @@
 package com.revature.bootdemo.repository;
+
 import java.util.List;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.revature.bootdemo.model.Courses;
 
-@RepositoryRestResource(collectionResourceRel = "courses", path = "courses")
-public interface CoursesRepository extends PagingAndSortingRepository<Courses, Long> {
-
-	List<Courses> findById(@Param("id") int id);
-
+@Repository
+public interface CoursesRepository extends JpaRepository<Courses, Integer> {
+	public Courses getById(int id);
 }
