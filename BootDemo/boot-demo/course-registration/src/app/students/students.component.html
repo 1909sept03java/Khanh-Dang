@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<br><br>
+<br>
+<br>
+<p><strong>COURSES SCHEDULE</strong></p>
+<table class="table table-bordered" border="1">
+  <thead></thead>
+  <tr>
+    <th>COURSE</th>
+    <th> DESCRIPTION</th>
+  </tr>
+  <tbody>
+  <tr class="bg-warning rounded-pill" *ngFor= "let Courses">
+    <td>{{Courses.coursesId}}</td>
+    <td>{{Courses.description}}</td>
+  </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
