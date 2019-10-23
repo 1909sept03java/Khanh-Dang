@@ -12,13 +12,13 @@ export class CoursesComponent implements OnInit {
   Courses1: any[] = [];
   // tslint:disable-next-line:no-shadowed-variable
   constructor(private CoursesServiceComponent: ServiceComponent) { }
-
   ngOnInit() {
     this.loadtable();
   }
 
   loadtable() {
-    for (let i = 0; i < 10; i++) {
+    // original was i = 10
+    for (let i = 0; i < 7; i++) {
       this.CoursesServiceComponent.getCourses().subscribe(
         response => this.handleSuccessfulResponse(response),
       );
@@ -28,7 +28,8 @@ export class CoursesComponent implements OnInit {
   handleSuccessfulResponse(response) {
     this.Courses = response;
     console.log(response);
-    for (let i = 0; i < 10; i++) {
+    // original was i = 10
+    for (let i = 0; i < 17; i++) {
       // this.Courses.push(this.Courses[i]);
       this.Courses1.push(this.Courses[i]);
     }

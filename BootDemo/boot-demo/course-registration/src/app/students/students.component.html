@@ -1,21 +1,78 @@
+<body style="background-color:slategrey;">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<p style="color:coral; font-size: 300%; " class="center"><strong> STUDENT PORTAL </strong> </p>
 <br><br>
+<div><button style="color:blueviolet; font-size: 100%; "  (click)="showRoster()">STUDENT ROSTER</button></div>
+<div *ngIf = "showbutton1">
+  <br>
+  <table class="table table-bordered" border="1">
+    <thead></thead>
+    <tr>
+      <th>STUDENT_ID</th>
+      <th> NAME</th>
+    </tr>
+    <tbody>
+    <tr class="bg-warning rounded-pill" *ngFor= "let Students of Students1">
+      <td>{{Students.id}}</td>
+      <td>{{Students.name}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <br>
+  <button style="color:dodgerblue; font-size: 100%; "  (click)="selectStudent()">SELECT</button>
+</div>
 <br>
 <br>
-<p><strong>COURSES SCHEDULE</strong></p>
-<table class="table table-bordered" border="1">
-  <thead></thead>
-  <tr>
-    <th>COURSE</th>
-    <th> DESCRIPTION</th>
-  </tr>
-  <tbody>
-  <tr class="bg-warning rounded-pill" *ngFor= "let Courses">
-    <td>{{Courses.coursesId}}</td>
-    <td>{{Courses.description}}</td>
-  </tr>
-  </tbody>
-</table>
+
+<div><button style="color:blueviolet; font-size: 100%; "  (click)="showSchedule()">MY SCHEDULE</button></div>
+<div *ngIf = "showbutton2">
+  <br>
+  <table class="table table-bordered" border="1">
+    <thead></thead>
+    <tr>
+      <th>STUDENT_ID</th>
+      <th> COURSE_ID</th>
+      <th> DESCRIPTION</th>
+    </tr>
+    <tbody>
+    <tr class="bg-warning rounded-pill" *ngFor= "let Courses of Courses1">
+      <td>{{Students.id}}</td>
+      <td>{{Courses.id}}</td>
+      <td>{{Courses.description}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <br>
+</div>
+<br>
+<br>
+
+<div><button style="color:blueviolet; font-size: 100%; "  (click)="showModSchedule()">MODIFY SCHEDULE</button></div>
+<div *ngIf = "showbutton3">
+  <br>
+  <table class="table table-bordered" border="1">
+    <thead></thead>
+    <tr>
+      <th>STUDENT_ID</th>
+      <th> COURSE_ID</th>
+      <th> DESCRIPTION</th>
+    </tr>
+    <tbody>
+    <tr class="bg-warning rounded-pill" *ngFor= "let Courses of Courses1">
+      <td>{{Courses.id}}</td>
+      <td>{{Courses.description}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <br>
+  <button style="color:limegreen; font-size: 100%; "  (click)="register()">REGISTER</button>
+  <button style="color:darkred; font-size: 100%; "  (click)="drop()">DROP</button>
+  <br>
+</div>
+<br>
+<br>
+
+</body>
 
 
 

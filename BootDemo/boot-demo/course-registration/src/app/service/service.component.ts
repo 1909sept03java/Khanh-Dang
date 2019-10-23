@@ -9,6 +9,16 @@ export class Courses {
     public description: string
   ) {}
 }
+// students class
+export class Students {
+  constructor(
+    public studentId: number,
+    public name: string
+  ) {}
+}
+
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,10 +28,18 @@ export class ServiceComponent {
     private httpClient: HttpClient
   ) {}
 
+  // get courses schedule
   getCourses() {
-    console.log('populating table');
+    console.log('populating courses table');
     console.log(this.httpClient.get<Courses[]>('http://localhost:8082/course/all'));
     return this.httpClient.get<Courses[]>('http://localhost:8082/course/all');
+  }
+
+  // get students roster
+  getStudents() {
+    console.log('populating students table');
+    console.log(this.httpClient.get<Students[]>('http://localhost:8082/student/all'));
+    return this.httpClient.get<Students[]>('http://localhost:8082/student/all');
   }
 }
 
